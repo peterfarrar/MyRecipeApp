@@ -1,0 +1,57 @@
+DROP TABLE IF EXISTS `description`;
+CREATE TABLE `description` (
+  `recipe_id` mediumint(9) NOT NULL,
+  `text_no` mediumint(9) NOT NULL,
+  `text` varchar(16383) NOT NULL,
+  PRIMARY KEY (`recipe_id`,`text_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `ingredients`
+--
+
+DROP TABLE IF EXISTS `ingredients`;
+CREATE TABLE `ingredients` (
+  `id` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `recipe_id` mediumint(9) NOT NULL,
+  `ingredient` char(127) NOT NULL,
+  `ingredient_no` mediumint(9) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=177 DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `recipe`
+--
+
+DROP TABLE IF EXISTS `recipe`;
+CREATE TABLE `recipe` (
+  `id` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `title` char(63) NOT NULL,
+  `heading` char(63) NOT NULL,
+  `author` char(127) NOT NULL,
+  `date` date DEFAULT NULL,
+  `user` char(63) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `steps`
+--
+
+DROP TABLE IF EXISTS `steps`;
+CREATE TABLE `steps` (
+  `recipe_id` mediumint(9) NOT NULL,
+  `step_no` mediumint(9) NOT NULL,
+  `step` varchar(1279) NOT NULL,
+  PRIMARY KEY (`recipe_id`,`step_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `user` char(63) NOT NULL,
+  `password` char(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
